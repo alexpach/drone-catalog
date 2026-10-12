@@ -1,0 +1,11 @@
+# Secrets and machine-local configuration
+.env
+.env.*
+!.env.example
+**/.claude/settings.local.json
+**/.vscode/settings.json
+
+# Local/generated files
+.DS_Store
+__pycache__/
+*.py[cod]
