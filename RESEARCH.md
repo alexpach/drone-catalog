@@ -1,5 +1,29 @@
 # Research notes
 
+## 2026-10-13 — Drone Dominance Program vendor rosters
+
+The [DDP vendors page](https://dronedominance.mil/vendors.html) builds its
+lists with JavaScript, so the names do not appear in the page HTML. They live in
+[`js/vendor-data.js`](https://dronedominance.mil/js/vendor-data.js), which also
+holds the Gauntlet I/II leaderboards, Phase 2 no-shows, lethality vendors, and
+a vendor directory with websites and contacts. Contacts were not imported.
+
+- Phase 1 lists 26 Gauntlet I competitors. It differs from the earlier war.gov
+  invite list: Draganfly, Perennial Autonomy, Skycutter, and Titan Dynamics
+  were added. Kratos, Napatree Technology, and Responsibly Ltd do not appear.
+- Phase 2 Qualifier: 49 invitees at Camp Grayling, 19 advanced to Gauntlet II
+  at Fort Carson, and 5 did not show. Several entries are teams (ADS + Lumenier,
+  Mountain Horse + AG3 Labs, Mountain Horse + Draganfly, Chase Defense
+  Partners/Advanced Aircraft Company).
+- Lethality vendors: Bravo Ordnance, Kela Defense, Kraken Kinetics, Mountain
+  Horse, and Northrop Grumman won the Lethality Prize Challenge. Perennial
+  Autonomy, Vector/Nammo, and XTEND were also used.
+- Directory websites show that Ascent AeroSystems now sits under Robinson
+  Helicopter and Halo Aeronautics under By Light. Grim, Stellarion, and General
+  Cherry/Wilcox Cherry sites are Ukrainian military-drone makers.
+- A Phase 2.5 roster (17 companies) is in the data file but not rendered on
+  the vendors page. It has not been imported yet.
+
 ## 2026-10-12 — Global drone company index, initial Keenable pass
 
 ### Scope

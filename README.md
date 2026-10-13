@@ -24,11 +24,20 @@ directories and checked against company sources. The map says about 300
 organizations were removed since 2022 because of acquisitions, dissolution, or
 market exits; this is why historic status matters in the register.
 
-As of 2026-10-12, the register contains 200 unique records. It includes 98
-military or counter-UAS tagged records; 41 carried-over legacy candidates still
-need confirmation that they operated during or after 2016. Twenty-five domains
-and 30 countries of origin are explicitly unresolved. These numbers describe
-the current working register, not the total size of the global market.
+As of 2026-10-13, the register contains 240 unique records. It includes 137
+military, munitions, or counter-UAS tagged records; 41 carried-over legacy
+candidates still need confirmation that they operated during or after 2016.
+Forty-four domains and 33 countries of origin are explicitly unresolved. These
+numbers describe the current working register, not the total size of the global
+market.
+
+`index.html` is a browser viewer for `companies.csv` with per-column sorting
+and filtering. To use it locally, run `python3 -m http.server` in the repo root
+and open <http://localhost:8000>. Opening the file directly will not load the CSV.
+
+`scripts/import_ddp_vendors.py` merges the U.S. Drone Dominance Program Phase 1
+and Phase 2 rosters from <https://dronedominance.mil/vendors.html>. Rows from
+it carry a `DDP:` note describing each company's participation.
 
 Each record should be checked for identity, time period, domain ownership,
 business status, acquisition/closure, and whether the organization is a
