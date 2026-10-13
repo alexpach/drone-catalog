@@ -274,6 +274,10 @@ EXTRA = [
 
 
 def load_legacy_metadata():
+    # The archive was removed from the repo; every current row already carries
+    # the fields this metadata used to backfill.
+    if not (ARCHIVE_MAKES / "manifest.json").exists():
+        return {}
     master = json.loads((ARCHIVE_MAKES / "manifest.json").read_text())
     by_name = {}
     for make in master.get("makes", []):

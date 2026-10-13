@@ -1,5 +1,16 @@
 # Changes
 
+## 2026-10-13 — Remove `archive/` from the repo and its history
+
+- Rewrote both commits to drop `archive/`. That folder held the legacy
+  catalog's product images, screenshots and scripts, including a hard-coded
+  logo.dev key. The local pack shrank from about 58 MB to 36 KB.
+- `scripts/enrich_companies.py` now skips the legacy manifest lookup when the
+  archive is absent. Every current row already has the fields it backfilled.
+- Test: `python3 scripts/enrich_companies.py` followed by
+  `python3 scripts/import_ddp_vendors.py` leaves `companies.csv` unchanged, and
+  `git log --all -- archive` is empty.
+
 ## 2026-10-13 — Company register viewer
 
 - Added `index.html`, which loads `companies.csv` and shows every column. You
