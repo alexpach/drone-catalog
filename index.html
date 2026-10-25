@@ -74,24 +74,74 @@
   .s-acquired { color: var(--acq); background: var(--acq-bg); }
   .s-unknown { color: var(--unk); background: var(--unk-bg); }
   .msg { padding: 24px; color: var(--muted); }
-  @media (max-width: 600px) {
+  [hidden] { display: none !important; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  tbody tr { cursor: pointer; }
+  .sort-button { padding: 0; border: 0; background: none; font-weight: inherit; white-space: nowrap; }
+  .mobile-controls, .cards { display: none; }
+  .details { max-width: 900px; margin: 0 auto; padding: 24px 20px 48px; }
+  .back-link { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 16px; }
+  .details h1 { font-size: 30px; overflow-wrap: anywhere; }
+  .details .summary { font-size: 16px; color: var(--muted); margin: 8px 0 16px; }
+  .details h2 { font-size: 18px; margin: 28px 0 12px; }
+  .detail-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 20px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; }
+  .detail-fields div { min-width: 0; }
+  .detail-fields dt { color: var(--muted); margin-bottom: 5px; }
+  .detail-fields dd { margin: 0; font-size: 16px; overflow-wrap: anywhere; white-space: pre-wrap; }
+  .detail-fields .wide { grid-column: 1 / -1; }
+  @media (max-width: 760px) {
+    body { font-size: 15px; }
+    header { padding-top: 24px; }
+    h1 { font-size: 24px; }
+    .desktop-hint { display: none; }
+    .bar { gap: 12px; }
+    .bar input[type=search] { flex-basis: 100%; max-width: none; width: 100%; min-width: 0; font-size: 16px; min-height: 48px; }
+    button, select { min-height: 44px; }
+    .mobile-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 16px 16px; }
+    .mobile-controls label { display: grid; gap: 5px; min-width: 0; color: var(--muted); font-size: 13px; }
+    .mobile-controls label:last-child { grid-column: 1 / -1; }
+    .mobile-controls select { width: 100%; min-width: 0; padding: 8px; font-size: 16px; border: 1px solid var(--border); border-radius: 6px; background: var(--panel); color: var(--text); }
+    .wrap { display: none; }
+    .cards { display: grid; gap: 12px; padding: 0 16px 24px; }
+    .company-card { display: block; padding: 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--panel); color: var(--text); overflow-wrap: anywhere; }
+    .company-card:hover { border-color: var(--accent); text-decoration: none; }
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .card-top h2 { font-size: 18px; margin: 0; }
+    .card-top .pill { flex-shrink: 0; }
+    .company-card p { margin: 10px 0; color: var(--muted); }
+    .card-bottom { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 13px; }
+    .card-bottom span:last-child { color: var(--accent); white-space: nowrap; }
+    .details { padding: 16px; }
+    .detail-fields { grid-template-columns: minmax(0, 1fr); padding: 16px; }
+  }
+  @media (max-width: 760px) {
     header, .bar { padding-left: 16px; padding-right: 16px; }
     .wrap { margin: 0 16px 16px; }
-    .count { margin-left: 0; width: 100%; }
+    .count { margin-left: auto; }
   }
 </style>
 </head>
 <body>
+<main id="catalog">
 <header>
   <h1>Drone Company Index</h1>
-  <div class="sub">Viewer for <a href="companies.csv">companies.csv</a>. Click a column title to sort; type or pick in the row below it to filter.</div>
+  <div class="sub">Viewer for <a href="companies.csv">companies.csv</a>. Select a company to view its details.<span class="desktop-hint"> Click a column title to sort; use the row below it to filter.</span></div>
 </header>
 <div class="bar">
   <input type="search" id="q" placeholder="Search all columns…" aria-label="Search all columns">
   <button id="clear">Clear filters</button>
-  <span class="count" id="count"></span>
+  <span class="count" id="count" role="status" aria-live="polite"></span>
 </div>
+<div class="mobile-controls">
+  <label>Status<select id="mobile-status"><option value="__all">All statuses</option></select></label>
+  <label>Country<select id="mobile-country"><option value="__all">All countries</option></select></label>
+  <label>Sort by<select id="mobile-sort"><option value="">Original order</option><option value="name:1">Company name: A–Z</option><option value="name:-1">Company name: Z–A</option><option value="country_of_origin:1">Country: A–Z</option></select></label>
+</div>
+<div class="cards" id="cards" aria-label="Companies"></div>
 <div class="wrap"><table id="t"><thead></thead><tbody><tr><td class="msg">Loading companies.csv…</td></tr></tbody></table></div>
+
+</main>
+<main id="details" class="details" hidden></main>
 
 <script>
 // Columns with at most this many distinct values get a dropdown filter.
@@ -123,11 +173,45 @@ const isBlank = v => v === '' || v.toLowerCase() === 'unknown';
 let cols = [], data = [], sort = { col: null, dir: 1 };
 const filters = {};
 
+const companyURL = name => '#company=' + encodeURIComponent(name);
+const statusPill = value => '<span class="pill s-' + esc(value) + '">' + esc(value) + '</span>';
+
+function showDetails() {
+  const params = new URLSearchParams(location.hash.slice(1));
+  const name = params.get('company');
+  const detail = document.getElementById('details');
+  document.getElementById('catalog').hidden = name !== null;
+  detail.hidden = name === null;
+  if (name === null) { document.title = 'Drone Company Index'; return; }
+  const row = data.find(r => r.name === name);
+  const back = '<a class="back-link" href="#">← Back to companies</a>';
+  if (!row) {
+    detail.innerHTML = back + '<h1 tabindex="-1">Company not found</h1><p>This company is not in the current register.</p>';
+    document.title = 'Company not found · Drone Company Index';
+  } else {
+    document.title = row.name + ' · Drone Company Index';
+    const fields = cols.filter(c => c !== 'name' && c !== 'status');
+    detail.innerHTML = back + '<h1 tabindex="-1">' + esc(row.name) + '</h1><p class="summary">' + esc(row.industry) + ' · ' + esc(row.country_of_origin) + '</p>' + statusPill(row.status) +
+      '<h2>Company details</h2><dl class="detail-fields">' + fields.map(c => {
+        const value = row[c];
+        let content = esc(value || 'Not recorded');
+        let url = c === 'domain' && !isBlank(value) ? 'https://' + value : LINK_COLS.has(c) ? value : '';
+        try {
+          if (url && ['http:', 'https:'].includes(new URL(url).protocol)) content = '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(value) + '</a>';
+        } catch (e) { /* Display invalid URLs as plain text. */ }
+        return '<div class="' + (['notes', 'evidence_url', 'status_source'].includes(c) ? 'wide' : '') + '"><dt>' + esc(c.replace(/_/g, ' ')) + '</dt><dd>' + content + '</dd></div>';
+      }).join('') + '</dl>';
+  }
+  detail.querySelector('h1').focus({ preventScroll: true });
+}
+window.addEventListener('hashchange', () => { showDetails(); if (!document.getElementById('details').hidden) window.scrollTo(0, 0); });
+
 function cell(col, v) {
   if (v === '') return '<td class="' + col + '"></td>';
   if (v.toLowerCase() === 'unknown') return '<td class="' + col + ' unknown">unknown</td>';
   let html = esc(v);
-  if (col === 'status') html = '<span class="pill s-' + esc(v) + '">' + esc(v) + '</span>';
+  if (col === 'name') html = '<a href="' + esc(companyURL(v)) + '">' + esc(v) + '</a>';
+  else if (col === 'status') html = '<span class="pill s-' + esc(v) + '">' + esc(v) + '</span>';
   else if (col === 'domain') html = '<a href="https://' + esc(v) + '" target="_blank" rel="noopener">' + esc(v) + '</a>';
   else if (LINK_COLS.has(col) && /^https?:\/\//.test(v)) {
     let label = v;
@@ -159,8 +243,11 @@ function render() {
   });
   if (sort.col) rows = rows.slice().sort((a, b) => compare(a, b, sort.col));
   document.querySelector('#t tbody').innerHTML = rows.length
-    ? rows.map(r => '<tr>' + cols.map(c => cell(c, r[c])).join('') + '</tr>').join('')
+    ? rows.map(r => '<tr data-company="' + esc(r.name) + '">' + cols.map(c => cell(c, r[c])).join('') + '</tr>').join('')
     : '<tr><td class="msg" colspan="' + cols.length + '">No companies match these filters.</td></tr>';
+  document.getElementById('cards').innerHTML = rows.length ? rows.map(r =>
+    '<a class="company-card" href="' + esc(companyURL(r.name)) + '"><div class="card-top"><h2>' + esc(r.name) + '</h2>' + statusPill(r.status) + '</div><p>' + esc(r.industry) + '</p><div class="card-bottom"><span>' + esc(r.country_of_origin) + '</span><span>View details →</span></div></a>'
+  ).join('') : '<p class="msg">No companies match these filters.</p>';
   document.getElementById('count').textContent = rows.length === data.length
     ? data.length + ' companies' : rows.length + ' of ' + data.length + ' companies';
   document.querySelectorAll('thead tr.titles th').forEach(th => {
@@ -170,10 +257,10 @@ function render() {
 
 function buildHead() {
   const titles = cols.map(c =>
-    '<th class="' + c + '" data-col="' + c + '">' + esc(c.replace(/_/g, ' ')) + ' <span class="arrow"></span></th>').join('');
+    '<th class="' + c + '" data-col="' + c + '">' + '<button class="sort-button" type="button">' + esc(c.replace(/_/g, ' ')) + ' <span class="arrow"></span></button></th>').join('');
   const inputs = cols.map(c => {
     const values = [...new Set(data.map(r => r[c]))].sort((a, b) => a.localeCompare(b));
-    if (values.length <= SELECT_MAX) {
+    if (values.length <= SELECT_MAX || c === 'country_of_origin') {
       const opts = values.map(v => '<option value="' + esc(v) + '">' + (v === '' ? '(blank)' : esc(v)) + '</option>').join('');
       return '<th class="' + c + '"><select data-col="' + c + '" aria-label="Filter ' + c + '"><option value="__all">All</option>' + opts + '</select></th>';
     }
@@ -181,9 +268,13 @@ function buildHead() {
   }).join('');
   document.querySelector('#t thead').innerHTML =
     '<tr class="titles">' + titles + '</tr><tr class="filters">' + inputs + '</tr>';
-  // Pin the filter row directly under the title row, whatever its rendered height.
-  const titleHeight = document.querySelector('thead tr.titles').getBoundingClientRect().height;
-  document.querySelectorAll('thead tr.filters th').forEach(th => { th.style.top = titleHeight + 'px'; });
+  // Recalculate when switching between mobile cards and the desktop table.
+  const positionFilters = () => {
+    const titleHeight = document.querySelector('thead tr.titles').getBoundingClientRect().height;
+    document.querySelectorAll('thead tr.filters th').forEach(th => { th.style.top = titleHeight + 'px'; });
+  };
+  positionFilters();
+  window.addEventListener('resize', positionFilters);
 
   document.querySelectorAll('thead tr.titles th').forEach(th => th.addEventListener('click', () => {
     const col = th.dataset.col;
@@ -191,6 +282,7 @@ function buildHead() {
     if (sort.col !== col) sort = { col, dir: 1 };
     else if (sort.dir === 1) sort.dir = -1;
     else sort = { col: null, dir: 1 };
+    document.getElementById('mobile-sort').value = sort.col ? sort.col + ':' + sort.dir : '';
     render();
   }));
   document.querySelectorAll('thead tr.filters input, thead tr.filters select').forEach(el => {
@@ -199,11 +291,32 @@ function buildHead() {
       if (el.tagName === 'SELECT') filters[col] = v === '__all' ? null : { exact: true, value: v };
       else filters[col] = v.trim() ? { exact: false, value: v.trim().toLowerCase() } : null;
       el.classList.toggle('active', !!filters[col]);
+      if (col === 'status' || col === 'country_of_origin') document.getElementById(col === 'status' ? 'mobile-status' : 'mobile-country').value = v;
       render();
     });
   });
 }
 
+document.querySelector('#t tbody').addEventListener('click', event => {
+  if (event.target.closest('a') || window.getSelection().toString()) return;
+  const row = event.target.closest('tr[data-company]');
+  if (row) location.hash = companyURL(row.dataset.company);
+});
+for (const [id, col] of [['mobile-status', 'status'], ['mobile-country', 'country_of_origin']]) {
+  document.getElementById(id).addEventListener('change', event => {
+    const value = event.target.value;
+    filters[col] = value === '__all' ? null : { exact: true, value };
+    const desktop = document.querySelector('.filters [data-col="' + col + '"]');
+    desktop.value = value === '__all' && desktop.tagName === 'INPUT' ? '' : value;
+    desktop.classList.toggle('active', !!filters[col]);
+    render();
+  });
+}
+document.getElementById('mobile-sort').addEventListener('change', event => {
+  const [col, dir] = event.target.value.split(':');
+  sort = col ? { col, dir: Number(dir) } : { col: null, dir: 1 };
+  render();
+});
 document.getElementById('q').addEventListener('input', render);
 document.getElementById('clear').addEventListener('click', () => {
   document.getElementById('q').value = '';
@@ -211,6 +324,9 @@ document.getElementById('clear').addEventListener('click', () => {
   document.querySelectorAll('thead tr.filters select').forEach(el => { el.value = '__all'; el.classList.remove('active'); });
   for (const k in filters) filters[k] = null;
   sort = { col: null, dir: 1 };
+  document.getElementById('mobile-status').value = '__all';
+  document.getElementById('mobile-country').value = '__all';
+  document.getElementById('mobile-sort').value = '';
   render();
 });
 
@@ -221,9 +337,17 @@ fetch('companies.csv', { cache: 'no-cache' })
     cols = header;
     data = body.map(r => Object.fromEntries(cols.map((c, i) => [c, r[i] ?? ''])));
     buildHead();
+    for (const [id, col] of [['mobile-status', 'status'], ['mobile-country', 'country_of_origin']]) {
+      const select = document.getElementById(id);
+      [...new Set(data.map(r => r[col]))].sort((a, b) => a.localeCompare(b)).forEach(value => select.add(new Option(value || '(blank)', value)));
+    }
     render();
+    showDetails();
   })
   .catch(err => {
+    document.getElementById('cards').textContent = 'Could not load companies.csv. Please reload to try again.';
+    document.getElementById('details').hidden = true;
+    document.getElementById('catalog').hidden = false;
     document.querySelector('#t tbody').innerHTML =
       '<tr><td class="msg">Could not load companies.csv (' + esc(String(err.message || err)) +
       '). If you opened this file directly, serve the folder instead: <code>python3 -m http.server</code>.</td></tr>';
