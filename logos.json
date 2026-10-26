@@ -162,6 +162,173 @@
     "path": "assets/logos/wingtra.png",
     "source": "https://cdn-focjb.nitrocdn.com/RzUKmdHdCIStbdZtPxHaJLNXjEKZQBeM/assets/images/optimized/rev-ec975e3/wingtra.com/wp-content/uploads/wingtra-logo-short-300x300.png"
   },
+  "xCraft": {
+    "path": "assets/logos/xcraft.png",
+    "source": "https://xcraft.io/wp-content/uploads/2021/10/cropped-fav-192x192.png"
+  },
+  "Yuneec": {
+    "path": "assets/logos/yuneec.png",
+    "source": "https://yuneec.com/wp-content/uploads/2023/12/favicon.png"
+  },
+  "Wingcopter": {
+    "path": "assets/logos/wingcopter.png",
+    "source": "https://wingcopter.com/wp-content/uploads/2024/02/black_favicon.png"
+  },
+  "NextLeap Aeronautics": {
+    "path": "assets/logos/nextleap.png",
+    "source": "https://nextleap-aeronautics.com/wp-content/uploads/2024/12/Logo-New-Text-1111.png"
+  },
+  "Agricision": {
+    "path": "assets/logos/agricision.png",
+    "source": "https://images.squarespace-cdn.com/content/v1/64d84e711e485f764cd6b02b/c0f7ad94-c75c-4240-b5f7-fc715090e0d1/agricision-inc-logo-cropped.png?format=1500w"
+  },
+  "Aizy Tech": {
+    "path": "assets/logos/aizy-tech.png",
+    "source": "https://static.wixstatic.com/media/e56a4b_cb417c6a36b44d6c89d02a65391d7d7f~mv2.png/v1/fill/w_180,h_180,lg_1,usm_0.66_1.00_0.01/e56a4b_cb417c6a36b44d6c89d02a65391d7d7f~mv2.png"
+  },
+  "Biodrone": {
+    "path": "assets/logos/biodrone.ico",
+    "source": "https://biodrone.ai/favicon.ico"
+  },
+  "Prometheus UAV": {
+    "path": "assets/logos/prometheus.png",
+    "source": "https://prometheus-sa.com/wp-content/themes/yootheme/cache/2b/prometheus-logo-czerwczar-2beffc59.png"
+  },
+  "Arcsky": {
+    "path": "assets/logos/arcsky.png",
+    "source": "https://static.wixstatic.com/media/f1ac4c_bb3d1b2d08014f72ab89265dbca7134b~mv2.png/v1/fill/w_159,h_44,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/arcsky_horizontal_white_30mm_tall.png",
+    "dark": true
+  },
+  "Rodella Technologies": {
+    "path": "assets/logos/rodella.avif",
+    "source": "https://www.rodella.in/images/RodellaLogo.avif",
+    "dark": true
+  },
+  "AA Robotics": {
+    "path": "assets/logos/aa-robotics.png",
+    "source": "https://aa-robotics.com/assets/aa-robotics-logo.png",
+    "dark": true
+  },
+  "Aeronica Advance Technologies": {
+    "path": "assets/logos/aeronica.png",
+    "source": "https://aeronica.in/images/logo@2x.png"
+  },
+  "Shark Tech Drone": {
+    "path": "assets/logos/shark-tech.webp",
+    "source": "https://32789290.s21i.faiusr.com/4/ABUIABAEGAAgkoOjuAYowoibwgcwngU4hAE.png.webp"
+  },
+  "Briech UAS": {
+    "path": "assets/logos/briech.png",
+    "source": "https://briechuas.com/assets/briech-logo-dark.png"
+  },
+  "FloFly Technologies": {
+    "path": "assets/logos/flofly.png",
+    "source": "https://www.flofly.in/img/flofly-logo.png"
+  },
+  "Bheema Drones": {
+    "path": "assets/logos/bheema.ico",
+    "source": "https://bheemadrones.com/favicon.ico"
+  },
+  "InsideFPV": {
+    "path": "assets/logos/insidefpv.png",
+    "source": "https://insidefpv.com/cdn/shop/files/logo.png?v=1701624051&width=2048"
+  },
+  "Aasma Aerospace": {
+    "path": "assets/logos/aasma.png",
+    "source": "https://res.cloudinary.com/dmmzrhzo4/images/w_509,h_300,c_scale/f_auto,q_auto/v1764493740/aasmaaerospace-logo/aasmaaerospace-logo.png?_i=AA"
+  },
+  "Skydagger Drones": {
+    "path": "assets/logos/skydagger.png",
+    "source": "https://cdn.skydagger.com/media/site/Logo_3.png",
+    "dark": true
+  },
+  "Dronecode": {
+    "path": "assets/logos/dronecode.png",
+    "source": "https://dronecode.org/wp-content/uploads/sites/59/2020/08/dronecode_logo_default-2.png"
+  },
+  "A2Z Drone Delivery": {
+    "path": "assets/logos/a2z.png",
+    "source": "https://images.squarespace-cdn.com/content/v1/5dae41cb5c5cd909ab83e042/05017215-ce2a-4141-9e84-628d9b92d807/A2Z-Logo.jpg"
+  },
+  "Amazon Prime Air": {
+    "path": "assets/logos/amazon-prime.png",
+    "source": "https://www.primeair.amazon/favicon-32x32.png"
+  },
+  "Antwork": {
+    "path": "assets/logos/antwork.ico",
+    "source": "https://xyi-web.oss-cn-hangzhou.aliyuncs.com/logo.ico"
+  },
+  "Dronamics": {
+    "path": "assets/logos/dronamics.png",
+    "source": "https://static.wixstatic.com/media/703ee7_93a784be70364bf2a3cea8bf12d60185~mv2.png/v1/fill/w_184,h_38,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dronamics_Logo.png"
+  },
+  "DroneUp": {
+    "path": "assets/logos/droneup.png",
+    "source": "https://images.squarespace-cdn.com/content/v1/6617fe32ebffba3de422429c/f8712442-f348-4868-b394-3bb0e8bc6272/DroneUp-Logo.png?format=1500w"
+  },
+  "Elroy Air": {
+    "path": "assets/logos/elroy.png",
+    "source": "https://elroyair.com/icons/ea_maskable_512.png"
+  },
+  "FlyingBasket": {
+    "path": "assets/logos/flyingbasket.png",
+    "source": "https://flyingbasket.com/web/image/website/1/logo/FlyingBasket?unique=601fcd5"
+  },
+  "Garuda Aerospace": {
+    "path": "assets/logos/garuda.svg",
+    "source": "https://www.garudaaerospace.com/favicon.svg"
+  },
+  "ideaForge Technology": {
+    "path": "assets/logos/ideaforge.jpeg",
+    "source": "https://ideaforgetech.com/img/home/logos/ideaforge-logo.jpeg"
+  },
+  "Matternet": {
+    "path": "assets/logos/matternet.png",
+    "source": "https://images.squarespace-cdn.com/content/v1/6695c6f810dd274bb43320fb/1721091903919-VIGJS82WI8RJ0K15K6GD/Matternet_Logo_BLK.png?format=1500w"
+  },
+  "Meituan": {
+    "path": "assets/logos/meituan.ico",
+    "source": "https://www.meituan.com/favicon.ico"
+  },
+  "Natilus": {
+    "path": "assets/logos/natilus.svg",
+    "source": "https://natilus.co/wp-content/themes/natilus/assets/images/logo.svg",
+    "dark": true
+  },
+  "Pyka": {
+    "path": "assets/logos/pyka.png",
+    "source": "https://cdn.prod.website-files.com/633e340e066c9116003e2ad3/673e038d176806c0a1682b20_Pyka_Emblem.png",
+    "dark": true
+  },
+  "Sabrewing Aircraft Company": {
+    "path": "assets/logos/sabrewing.png",
+    "source": "https://www.sabrewingaircraft.com/wp-content/uploads/2019/07/saco-logo-SMALL.png",
+    "dark": true
+  },
+  "Skye Air Mobility": {
+    "path": "assets/logos/skye-air.svg",
+    "source": "https://skyeair.tech/assets/favicon-D8-Gft4E.svg"
+  },
+  "Skyports Drone Services": {
+    "path": "assets/logos/skyports.png",
+    "source": "https://skyportsdroneservices.com/wp-content/uploads/2023/12/Skyports-DS_Dark@4x-f5d9ed50-ec28-46a7-867e-448b732daba1-1-300x77.png"
+  },
+  "Speedbird Aero": {
+    "path": "assets/logos/speedbird.svg",
+    "source": "https://speedbird.aero/assets/logo-speedbird.svg"
+  },
+  "TechEagle": {
+    "path": "assets/logos/techeagle.png",
+    "source": "https://framerusercontent.com/images/uMl9ZqS46Qc9bv4Ic6MBOgE8Pf8.png"
+  },
+  "UPS Flight Forward": {
+    "path": "assets/logos/ups.ico",
+    "source": "https://about.ups.com/content/dam/upsstories/images/favicon.ico"
+  },
+  "Wing": {
+    "path": "assets/logos/wing.png",
+    "source": "https://framerusercontent.com/images/4hjT6HpfFg7AW2Umjkev6lknk.png"
+  },
   "Hoverseen": {
     "status": "unresolved",
     "source": "https://hoverseen.com/",
