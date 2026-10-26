@@ -1,0 +1,22 @@
+{
+  "AeroVironment": {"path": "assets/logos/aero-viron-ment.svg", "source": "https://www.avinc.com/wp-content/uploads/2026/02/logo.svg?quality=100"},
+  "American Robotics": {"path": "assets/logos/american-robotics.png", "source": "https://www.american-robotics.com/"},
+  "ArrowTec": {"path": "assets/logos/arrowtec.webp", "source": "https://images.squarespace-cdn.com/content/v1/64ec7bb16f7183355a19435c/1693219769890-CWL8BTJC1F2KRA44TTRE/arrowtec_logo.png?format=1500w"},
+  "Asylon Robotics": {"path": "assets/logos/asylon.png", "source": "https://asylonrobotics.com/wp-content/uploads/2025/09/cropped-Asylon_Logo_NoText_Final521x521-192x192-1.png?10001088"},
+  "Autel Robotics": {"path": "assets/logos/autel.png", "source": "https://www.autelrobotics.com/wp-content/uploads/2024/03/Logo.png"},
+  "Azur Drones": {"path": "assets/logos/azur-drones.ico", "source": "http://azurdrones.com/favicon.ico"},
+  "Baykar": {"path": "assets/logos/baykar.svg", "source": "https://cdn.baykartech.com/media/images/contents/Baykar-Logo.svg"},
+  "BetaFPV": {"path": "assets/logos/betafpv.png", "source": "https://cdn.shopify.com/s/files/1/1778/6615/files/logo-transparent_a3941ef6-2440-40bb-b70e-d69011ae778c.png?v=1628646190"},
+  "Delair": {"path": "assets/logos/delair.png", "source": "https://delair.aero/wp-content/uploads/2019/04/Delair_Logo_Original_Orange-Grey.png"},
+  "DJI": {"path": "assets/logos/dji.svg", "source": "https://www-cdn.djiits.com/cms/uploads/0270ac3bd643124f73a5bfd9638ada6d.svg"},
+  "DroneHub": {"path": "assets/logos/dronehub.svg", "source": "https://dronehub.ai/logos/dronehub-wordmark.svg"},
+  "Easy Aerial": {"path": "assets/logos/easy-aerial.svg", "source": "https://ezaerial.com/icon.svg"},
+  "EHang": {"path": "assets/logos/ehang.png", "source": "https://www.ehang.com/images/logo_black.png"},
+  "FIMI": {"path": "assets/logos/fimi.svg", "source": "https://www.fimi.com/static/images/fimi-logo-full.svg"},
+  "Fotokite": {"path": "assets/logos/fotokite.png", "source": "https://fotokite.com/wp-content/themes/ursprung-fotokite/assets/icons/apple-touch-icon.png", "dark": true},
+  "Freefly Systems": {"path": "assets/logos/freefly.jpeg", "source": "https://freeflysystems.com/wp-content/uploads/2023/02/freefly-og-logo.jpeg"},
+  "General Atomics Aeronautical": {"path": "assets/logos/ga-asi.png", "source": "https://www.ga-asi.com/images/general-atomics-aeronautical-systems-logo803x120.png", "dark": true},
+  "H3 Dynamics": {"path": "assets/logos/h3-dynamics.jpg", "source": "https://h3dynamics.com/"},
+  "HEISHA": {"path": "assets/logos/heisha.png", "source": "https://heishatech.com/wp-content/uploads/2022/07/red-logo-of-heisha-transparent.png"},
+  "HeroTech8": {"path": "assets/logos/herotech8.png", "source": "https://herotech8.com/wp-content/uploads/2022/02/cropped-favicon-192x192.png"}
+}
