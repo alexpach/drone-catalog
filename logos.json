@@ -206,8 +206,7 @@
   },
   "AA Robotics": {
     "path": "assets/logos/aa-robotics.png",
-    "source": "https://aa-robotics.com/assets/aa-robotics-logo.png",
-    "dark": true
+    "source": "https://aa-robotics.com/assets/aa-robotics-logo.png"
   },
   "Aeronica Advance Technologies": {
     "path": "assets/logos/aeronica.png",
@@ -328,6 +327,182 @@
   "Wing": {
     "path": "assets/logos/wing.png",
     "source": "https://framerusercontent.com/images/4hjT6HpfFg7AW2Umjkev6lknk.png"
+  },
+  "Zipline": {
+    "path": "assets/logos/zipline.ico",
+    "source": "https://www.zipline.com/favicon.ico"
+  },
+  "Swoop Aero": {
+    "status": "unresolved",
+    "source": "https://swoop.aero/",
+    "reason": "The company domain now redirects to Kite Aero after Swoop Aero entered liquidation; no reliable Swoop Aero logo asset was found."
+  },
+  "Volansi": {
+    "status": "unresolved",
+    "source": "https://volansi.com/",
+    "reason": "The former company domain is unavailable; no reliable current logo asset was found."
+  },
+  "Anzu Robotics": {
+    "path": "assets/logos/anzu.png",
+    "source": "https://www.anzurobotics.com/wp-content/uploads/2024/04/cropped-Favicon-192x192.png"
+  },
+  "Aero Systems West": {
+    "path": "assets/logos/aero-systems-west.svg",
+    "source": "https://aerosystemswest.com/wp-content/uploads/2021/12/ASW-logo-mark.svg"
+  },
+  "Astral.us": {
+    "path": "assets/logos/astral.png",
+    "source": "https://astral.us/logo-black.png"
+  },
+  "Auterion": {
+    "path": "assets/logos/auterion.png",
+    "source": "https://i0.wp.com/auterion.com/wp-content/uploads/2026/09/auterion-favicon-512.png?fit=192%2C192&ssl=1"
+  },
+  "AirMap": {
+    "status": "unresolved",
+    "source": "https://droneup.com/",
+    "reason": "The listed domain now belongs to DroneUp rather than AirMap; no reliable AirMap logo asset was found."
+  },
+  "Altitude Angel": {
+    "status": "unresolved",
+    "source": "https://altitudeangel.com/",
+    "reason": "The official site blocked asset retrieval in the research pass; no verified local logo asset was added."
+  },
+  "OneSky": {
+    "path": "assets/logos/onesky.png",
+    "source": "https://static.wixstatic.com/media/698cbe_5af052062d5f4e09a013a1a98b0095fc~mv2.png/v1/fill/w_192,h_192,lg_1,usm_0.66_1.00_0.01/698cbe_5af052062d5f4e09a013a1a98b0095fc~mv2.png"
+  },
+  "Thales": {
+    "status": "unresolved",
+    "source": "https://www.thalesgroup.com/",
+    "reason": "The official site did not expose a reliable logo asset in the research pass."
+  },
+  "Lockheed Martin": {
+    "status": "unresolved",
+    "source": "https://www.lockheedmartin.com/",
+    "reason": "The official site blocked asset retrieval in the research pass; no verified local logo asset was added."
+  },
+  "D-Fend Solutions": {
+    "path": "assets/logos/dfend.png",
+    "source": "https://d-fendsolutions.com/wp-content/uploads/2020/11/cropped-pav-192x192.png"
+  },
+  "Dedrone": {
+    "path": "assets/logos/dedrone.svg",
+    "source": "https://cdn.prod.website-files.com/58fa92301759990d60953ccf/66f93beea52d60f43f3240f9_Dedrone-by-Axon-Phase-1-black.svg"
+  },
+  "Allen Control Systems": {
+    "status": "unresolved",
+    "source": "https://allencontrolsystems.com/",
+    "reason": "The official site exposed social imagery but no reliable logo asset in the research pass."
+  },
+  "Motorola Solutions": {
+    "path": "assets/logos/motorola.ico",
+    "source": "https://www.motorolasolutions.com/etc/designs/msi/favicon.ico"
+  },
+  "Axon": {
+    "path": "assets/logos/axon.svg",
+    "source": "https://www.axon.com/favicon/favicon.svg"
+  },
+  "ORQA": {
+    "status": "unresolved",
+    "source": "https://orqafpv.com/",
+    "reason": "The official site exposed product imagery but no reliable standalone logo asset in the research pass."
+  },
+  "Indra Group": {
+    "path": "assets/logos/indra.png",
+    "source": "https://www.indragroup.com/cms-content/2025/04/cropped-android-chrome-512x512-1-1.png"
+  },
+  "Fincantieri": {
+    "status": "unresolved",
+    "source": "https://www.fincantieri.com/",
+    "reason": "The available favicon resolved to a product mark rather than a reliable Fincantieri logo."
+  },
+  "WB Group": {
+    "path": "assets/logos/wbgroup.png",
+    "source": "https://www.wbgroup.pl/apple-touch-icon.png"
+  },
+  "Destinus": {
+    "path": "assets/logos/destinus.png",
+    "source": "https://cdn.prod.website-files.com/696aa687f423696991481f4a/69d15fb972ae6e8cace05ef3_177b3ae27549c6ec3b26507aed998e14_open-graph-basic-title.png"
+  },
+  "RSI Europe": {
+    "path": "assets/logos/rsi.png",
+    "source": "https://rsieu.com/wp-content/uploads/2025/01/cropped-RSI-web-icon1.png"
+  },
+  "TERMA": {
+    "path": "assets/logos/terma.ico",
+    "source": "https://www.terma.com/dist/assets/favicons/favicon.ico"
+  },
+  "Skyfall Industries": {
+    "path": "assets/logos/skyfall.webp",
+    "source": "https://www.drone-directory.com.ua/profile/skyfall/"
+  },
+  "Greentech Harvest": {
+    "status": "unresolved",
+    "source": "",
+    "reason": "No verified official domain or logo source was available."
+  },
+  "Tencore": {
+    "status": "unresolved",
+    "source": "https://tencore.com.ua/",
+    "reason": "The available image was a campaign hero rather than a reliable standalone logo."
+  },
+  "Deviro": {
+    "path": "assets/logos/deviro.png",
+    "source": "https://deviro.ua/wp-content/uploads/2025/10/fav-deviro-300x300.png"
+  },
+  "Vyriy Industry": {
+    "path": "assets/logos/vyriy.png",
+    "source": "https://vyriy.com/favicon.png"
+  },
+  "Athlon Avia": {
+    "path": "assets/logos/athlon.svg",
+    "source": "https://athlonavia.com/wp-content/themes/furia/img/favicon/favicon.svg"
+  },
+  "TAF Industries": {
+    "path": "assets/logos/taf.png",
+    "source": "https://taf-ua.com/wp-content/uploads/2026/07/cropped-cropped-favicon-32x32-1-192x192.png"
+  },
+  "UFORCE": {
+    "status": "unresolved",
+    "source": "https://uforce.com/",
+    "reason": "The official site exposed social imagery but no reliable standalone logo asset in the research pass."
+  },
+  "F-Drones": {
+    "path": "assets/logos/fdrones.png",
+    "source": "https://fdrones.tech/assets/images/favicon-b11ccbcb6ee39e9c3b829db9a0323f6e.png"
+  },
+  "ANNO.AI": {
+    "status": "unresolved",
+    "source": "https://anno.ai/",
+    "reason": "The available image was a hero photograph rather than a reliable standalone logo."
+  },
+  "Ascent AeroSystems": {
+    "status": "unresolved",
+    "source": "https://robinsonheli.com/",
+    "reason": "The listed domain now resolves to Robinson Helicopter Company rather than Ascent AeroSystems."
+  },
+  "Auterion Government Solutions": {
+    "path": "assets/logos/auterion-gov.png",
+    "source": "https://i0.wp.com/auterion.com/wp-content/uploads/2026/09/auterion-favicon-512.png?fit=192%2C192&ssl=1"
+  },
+  "DZYNE Technologies": {
+    "path": "assets/logos/dzyne.png",
+    "source": "https://dzyne.com/wp-content/uploads/2026/01/favicon-300x300.png"
+  },
+  "Ewing Aerospace": {
+    "path": "assets/logos/ewing.ico",
+    "source": "https://ewingaerospace.com/img/favicon.ico"
+  },
+  "Farage Precision": {
+    "status": "unresolved",
+    "source": "https://farageprecision.com/",
+    "reason": "The official site did not expose a reliable logo asset in the research pass."
+  },
+  "Firestorm Labs": {
+    "status": "unresolved",
+    "source": "https://firestormlabs.com/",
+    "reason": "The current domain appears to have changed ownership and no longer exposed a reliable Firestorm Labs logo."
   },
   "Hoverseen": {
     "status": "unresolved",
