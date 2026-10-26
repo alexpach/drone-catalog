@@ -185,7 +185,7 @@ const companyURL = name => '#company=' + encodeURIComponent(name);
 const statusPill = value => '<span class="pill s-' + esc(value) + '">' + esc(value) + '</span>';
 function logoMarkup(name, className) {
   const logo = logos[name];
-  if (!logo) return '';
+  if (!logo || !logo.path) return '';
   return '<img class="logo ' + className + (logo.dark ? ' dark' : '') + '" src="' + esc(logo.path) + '" alt="" loading="lazy">';
 }
 

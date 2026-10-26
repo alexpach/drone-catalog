@@ -35,6 +35,12 @@ market.
 and filtering. To use it locally, run `python3 -m http.server` in the repo root
 and open <http://localhost:8000>. Opening the file directly will not load the CSV.
 
+Logo assets for the catalog are stored in `assets/logos/` and mapped in
+`logos.json`. Each entry records its source URL. After adding or refreshing an
+asset, run `python3 scripts/check_logo_contrast.py --write`; the check detects
+light-only marks and sets the `dark` flag used by the viewer for a dark logo
+background. Run it without `--write` to review suggestions first.
+
 `scripts/import_ddp_vendors.py` merges the U.S. Drone Dominance Program Phase 1
 and Phase 2 rosters from <https://dronedominance.mil/vendors.html>. Rows from
 it carry a `DDP:` note describing each company's participation.
