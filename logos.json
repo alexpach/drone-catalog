@@ -504,6 +504,176 @@
     "source": "https://firestormlabs.com/",
     "reason": "The current domain appears to have changed ownership and no longer exposed a reliable Firestorm Labs logo."
   },
+  "General Cherry Corp": {
+    "path": "assets/logos/general-cherry.svg",
+    "source": "https://gencherry.com/icon.svg?icon.0xzulo51ztzlm.svg"
+  },
+  "GreenSight": {
+    "path": "assets/logos/greensight.png",
+    "source": "https://cdn.prod.website-files.com/692ea25332f1205a28b6debd/69bad343e5b836d927104625_Favicon.png"
+  },
+  "Griffon Aerospace": {
+    "path": "assets/logos/griffon.png",
+    "source": "https://www.griffonaerospace.com/wp-content/uploads/2024/03/cropped-GA_Favicon-192x192.png"
+  },
+  "Halo Aeronautics": {
+    "status": "unresolved",
+    "source": "https://bylight.com/",
+    "reason": "The listed domain now resolves to By Light rather than Halo Aeronautics; no reliable Halo logo asset was found."
+  },
+  "Kratos SRE": {
+    "path": "assets/logos/kratos.png",
+    "source": "https://www.kratosdefense.com/wp-content/uploads/2025/05/favicon.png"
+  },
+  "ModalAI": {
+    "path": "assets/logos/modalai.png",
+    "source": "https://www.modalai.com/cdn/shop/files/favicon-logo-trans_32x32.png?v=1742451559"
+  },
+  "Napatree Technology": {
+    "status": "unresolved",
+    "source": "",
+    "reason": "No verified official domain or logo source was available."
+  },
+  "Neros": {
+    "path": "assets/logos/neros.png",
+    "source": "https://cdn.prod.website-files.com/6a7dba4345e62074a8b5ad52/6a8c425b5935e9afcef19360_Neros%20favicon.png"
+  },
+  "Nokturnal AI": {
+    "path": "assets/logos/nokturnal.png",
+    "source": "https://framerusercontent.com/images/38TUSOnNfvTz1K1MB6My0m3pUc.png"
+  },
+  "Paladin Defense Services": {
+    "path": "assets/logos/paladin.jpg",
+    "source": "https://cdn-ileojca.nitrocdn.com/TYjDAmXyVSXRlzgsevnArqyEzBGAXAXi/assets/images/optimized/rev-cdf9047/paladin-defense.com/wp-content/uploads/2023/11/5f20bfb0ef477a26cfbb1030_PALADIN-mini-Favicon.jpg"
+  },
+  "Performance Drone Works": {
+    "path": "assets/logos/pdw.png",
+    "source": "https://www.pdw.ai/icon1.png?521e9d279956a851"
+  },
+  "Responsibly Ltd": {
+    "status": "unresolved",
+    "source": "",
+    "reason": "No verified official domain or logo source was available."
+  },
+  "Swarm Defense Technologies": {
+    "path": "assets/logos/swarm.ico",
+    "source": "https://www.swarmdefense.com/favicon.ico?favicon.1799c00d.ico"
+  },
+  "Teal Drones": {
+    "status": "unresolved",
+    "source": "https://tealdrones.com/",
+    "reason": "The listed domain now redirects to Red Cat Aerial rather than Teal Drones; no reliable Teal logo asset was found."
+  },
+  "Ukrainian Defense Drones Tech Corp": {
+    "status": "unresolved",
+    "source": "",
+    "reason": "No verified official domain or logo source was available."
+  },
+  "Vector Defense": {
+    "status": "unresolved",
+    "source": "https://tfvector.com/",
+    "reason": "The available image was social imagery rather than a reliable standalone logo."
+  },
+  "W.S. Darley & Co.": {
+    "path": "assets/logos/darley.svg",
+    "source": "https://www.darley.com/wp-content/uploads/2022/09/darley-logo-black.svg"
+  },
+  "XTEND": {
+    "path": "assets/logos/xtend.png",
+    "source": "https://bunny-wp-pullzone-qcxvtthb51.b-cdn.net/wp-content/uploads/2026/09/cropped-Logo-Icon-white-scaled-1-192x192.png",
+    "dark": true
+  },
+  "AgEagle Aerial Systems": {
+    "path": "assets/logos/ageagle.png",
+    "source": "https://eaglenxt.com/wp-content/uploads/eaglenxt-favicon-300x300.png"
+  },
+  "CNHL (China Hobby Line)": {
+    "path": "assets/logos/cnhl.png",
+    "source": "https://chinahobbyline.com/cdn/shop/files/CNHL_Logo_8188dd42-f957-4fb4-9322-c8a5a92fe2d0_1200x697.png?v=1648209891"
+  },
+  "CaddxFPV": {
+    "path": "assets/logos/caddx.webp",
+    "source": "https://www.caddxfpv.com/cdn/shop/files/03_logo_7f29c7a6-2b30-4d0a-a94b-723f92215ada.webp?v=1773631292&width=2048"
+  },
+  "CubePilot": {
+    "path": "assets/logos/cubepilot.png",
+    "source": "https://cubepilot.org/assets/favicon/apple-icon-180x180.png"
+  },
+  "Diatone": {
+    "path": "assets/logos/diatone.jpg",
+    "source": "https://cdn.shopify.com/s/files/1/0027/2708/4144/files/diatone_logo_3679e4c1-053c-40e4-9e01-9f90192ab18b.jpg?v=1629092124"
+  },
+  "Dronetag": {
+    "status": "unresolved",
+    "source": "https://dronetag.com/",
+    "reason": "The official site exposed social imagery but no reliably downloadable standalone logo asset."
+  },
+  "Flywoo": {
+    "path": "assets/logos/flywoo.png",
+    "source": "https://img-va.myshopline.com/image/store/2004172091/1673593876355/flywoo-2013-v2-white.png?w=2481&h=2409",
+    "dark": true
+  },
+  "Foxeer": {
+    "path": "assets/logos/foxeer.ico",
+    "source": "https://www.foxeer.com/assets/foxeer/images/favicon.ico"
+  },
+  "GEPRC": {
+    "path": "assets/logos/geprc.ico",
+    "source": "https://geprc.com/favicon.ico"
+  },
+  "Gemfan": {
+    "path": "assets/logos/gemfan.ico",
+    "source": "https://img03.71360.com/w3/5p3560/20251103/fdbd266e4c08eed8be8e6741320d64ae.ico"
+  },
+  "Gremsy": {
+    "path": "assets/logos/gremsy.ico",
+    "source": "https://gremsy.com/favicon.ico"
+  },
+  "HOTA": {
+    "path": "assets/logos/hota.ico",
+    "source": "https://hota-exp.com/favicon.ico"
+  },
+  "HQProp": {
+    "path": "assets/logos/hqprop.png",
+    "source": "https://ueeshop.ly200-cdn.com/u_file/UPAJ/UPAJ828/1906/photo/f3a171d548.png"
+  },
+  "Hobbywing": {
+    "path": "assets/logos/hobbywing.png",
+    "source": "https://www.hobbywingdirect.com/cdn/shop/files/HW-logo400x200_17d62cfd-7fd6-445d-94c7-391d39cb592b_1200x.png?v=1634494962"
+  },
+  "Holybro": {
+    "path": "assets/logos/holybro.png",
+    "source": "https://holybro.com/cdn/shop/files/Blue_2_Line.png?v=1667902955"
+  },
+  "ISDT": {
+    "path": "assets/logos/isdt.png",
+    "source": "https://www.isdt.co/wp-content/uploads/2023/11/cropped-favicon-1.png"
+  },
+  "ImmersionRC": {
+    "status": "unresolved",
+    "source": "https://immersionrc.com/",
+    "reason": "The official site is currently a maintenance page and did not expose a reliable logo asset."
+  },
+  "Inspired Flight Technologies": {
+    "path": "assets/logos/inspired-flight.png",
+    "source": "https://static.wixstatic.com/media/5c3c27_8a74ecbeb01f416485a9622157f23550~mv2.png/v1/fill/w_192,h_192,lg_1,usm_0.66_1.00_0.01/5c3c27_8a74ecbeb01f416485a9622157f23550~mv2.png"
+  },
+  "Matek Systems": {
+    "path": "assets/logos/matek.jpg",
+    "source": "http://www.mateksys.com/wp-content/uploads/2013/04/matek-M.jpg"
+  },
+  "NextVision": {
+    "path": "assets/logos/nextvision.png",
+    "source": "https://nextvision-sys.com/wp-content/uploads/2025/11/nvfav.png"
+  },
+  "Potensic": {
+    "path": "assets/logos/potensic.ico",
+    "source": "https://www.potensic.com/favicon.ico"
+  },
+  "RadioMaster": {
+    "path": "assets/logos/radiomaster.png",
+    "source": "http://radiomasterrc.com/cdn/shop/files/RadioMaster_Logo_SVG_M-B.png?v=1750413682"
+  },
   "Hoverseen": {
     "status": "unresolved",
     "source": "https://hoverseen.com/",
