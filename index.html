@@ -74,6 +74,13 @@
   .s-acquired { color: var(--acq); background: var(--acq-bg); }
   .s-unknown { color: var(--unk); background: var(--unk-bg); }
   .msg { padding: 24px; color: var(--muted); }
+  .logo { width: 48px; height: 36px; padding: 4px; object-fit: contain; border-radius: 6px; background: var(--panel); flex: 0 0 auto; }
+  .logo.dark { background: #18202b; }
+  .table-logo { width: 28px; height: 28px; padding: 2px; margin-right: 8px; vertical-align: middle; }
+  td.name a { display: inline-flex; align-items: center; }
+  .card-company, .detail-title { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .card-company h2 { min-width: 0; }
+  .detail-logo { width: 72px; height: 56px; padding: 6px; }
   [hidden] { display: none !important; }
   :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
   tbody tr { cursor: pointer; }
@@ -107,6 +114,7 @@
     .company-card:hover { border-color: var(--accent); text-decoration: none; }
     .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
     .card-top h2 { font-size: 18px; margin: 0; }
+    .card-company h2 { margin: 0; }
     .card-top .pill { flex-shrink: 0; }
     .company-card p { margin: 10px 0; color: var(--muted); }
     .card-bottom { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 13px; }
@@ -170,11 +178,16 @@ function parseCSV(text) {
 const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const isBlank = v => v === '' || v.toLowerCase() === 'unknown';
 
-let cols = [], data = [], sort = { col: null, dir: 1 };
+let cols = [], data = [], logos = {}, sort = { col: null, dir: 1 };
 const filters = {};
 
 const companyURL = name => '#company=' + encodeURIComponent(name);
 const statusPill = value => '<span class="pill s-' + esc(value) + '">' + esc(value) + '</span>';
+function logoMarkup(name, className) {
+  const logo = logos[name];
+  if (!logo) return '';
+  return '<img class="logo ' + className + (logo.dark ? ' dark' : '') + '" src="' + esc(logo.path) + '" alt="" loading="lazy">';
+}
 
 function showDetails() {
   const params = new URLSearchParams(location.hash.slice(1));
@@ -191,7 +204,7 @@ function showDetails() {
   } else {
     document.title = row.name + ' · Drone Company Index';
     const fields = cols.filter(c => c !== 'name' && c !== 'status');
-    detail.innerHTML = back + '<h1 tabindex="-1">' + esc(row.name) + '</h1><p class="summary">' + esc(row.industry) + ' · ' + esc(row.country_of_origin) + '</p>' + statusPill(row.status) +
+    detail.innerHTML = back + '<div class="detail-title">' + logoMarkup(row.name, 'detail-logo') + '<h1 tabindex="-1">' + esc(row.name) + '</h1></div><p class="summary">' + esc(row.industry) + ' · ' + esc(row.country_of_origin) + '</p>' + statusPill(row.status) +
       '<h2>Company details</h2><dl class="detail-fields">' + fields.map(c => {
         const value = row[c];
         let content = esc(value || 'Not recorded');
@@ -210,7 +223,7 @@ function cell(col, v) {
   if (v === '') return '<td class="' + col + '"></td>';
   if (v.toLowerCase() === 'unknown') return '<td class="' + col + ' unknown">unknown</td>';
   let html = esc(v);
-  if (col === 'name') html = '<a href="' + esc(companyURL(v)) + '">' + esc(v) + '</a>';
+  if (col === 'name') html = '<a href="' + esc(companyURL(v)) + '">' + logoMarkup(v, 'table-logo') + esc(v) + '</a>';
   else if (col === 'status') html = '<span class="pill s-' + esc(v) + '">' + esc(v) + '</span>';
   else if (col === 'domain') html = '<a href="https://' + esc(v) + '" target="_blank" rel="noopener">' + esc(v) + '</a>';
   else if (LINK_COLS.has(col) && /^https?:\/\//.test(v)) {
@@ -246,7 +259,7 @@ function render() {
     ? rows.map(r => '<tr data-company="' + esc(r.name) + '">' + cols.map(c => cell(c, r[c])).join('') + '</tr>').join('')
     : '<tr><td class="msg" colspan="' + cols.length + '">No companies match these filters.</td></tr>';
   document.getElementById('cards').innerHTML = rows.length ? rows.map(r =>
-    '<a class="company-card" href="' + esc(companyURL(r.name)) + '"><div class="card-top"><h2>' + esc(r.name) + '</h2>' + statusPill(r.status) + '</div><p>' + esc(r.industry) + '</p><div class="card-bottom"><span>' + esc(r.country_of_origin) + '</span><span>View details →</span></div></a>'
+    '<a class="company-card" href="' + esc(companyURL(r.name)) + '"><div class="card-top"><div class="card-company">' + logoMarkup(r.name, 'card-logo') + '<h2>' + esc(r.name) + '</h2></div>' + statusPill(r.status) + '</div><p>' + esc(r.industry) + '</p><div class="card-bottom"><span>' + esc(r.country_of_origin) + '</span><span>View details →</span></div></a>'
   ).join('') : '<p class="msg">No companies match these filters.</p>';
   document.getElementById('count').textContent = rows.length === data.length
     ? data.length + ' companies' : rows.length + ' of ' + data.length + ' companies';
@@ -330,9 +343,12 @@ document.getElementById('clear').addEventListener('click', () => {
   render();
 });
 
-fetch('companies.csv', { cache: 'no-cache' })
-  .then(r => { if (!r.ok) throw new Error(r.status + ' ' + r.statusText); return r.text(); })
-  .then(text => {
+Promise.all([
+  fetch('companies.csv', { cache: 'no-cache' }).then(r => { if (!r.ok) throw new Error(r.status + ' ' + r.statusText); return r.text(); }),
+  fetch('logos.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+])
+  .then(([text, logoData]) => {
+    logos = logoData || {};
     const [header, ...body] = parseCSV(text);
     cols = header;
     data = body.map(r => Object.fromEntries(cols.map((c, i) => [c, r[i] ?? ''])));
