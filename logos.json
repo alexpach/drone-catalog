@@ -674,6 +674,346 @@
     "path": "assets/logos/radiomaster.png",
     "source": "http://radiomasterrc.com/cdn/shop/files/RadioMaster_Logo_SVG_M-B.png?v=1750413682"
   },
+  "RunCam": {
+    "path": "assets/logos/runcam.ico",
+    "source": "https://runcam.com/images/favicon.ico"
+  },
+  "Ryze Tech": {
+    "path": "assets/logos/ryze.ico",
+    "source": "https://www.ryzerobotics.com/favicon.ico"
+  },
+  "Sony": {
+    "path": "assets/logos/sony.ico",
+    "source": "https://pro.sony/assets/static/media/favicon.ico"
+  },
+  "SpeedyBee": {
+    "status": "unresolved",
+    "source": "https://speedybee.com/",
+    "reason": "The official site blocked asset retrieval in the research pass; no verified local logo asset was added."
+  },
+  "Swellpro": {
+    "path": "assets/logos/swellpro.png",
+    "source": "https://www.swellpro.com/cdn/shop/files/swellpro-favicon_32x32.png?v=1683864155"
+  },
+  "T-Motor": {
+    "path": "assets/logos/tmotor.ico",
+    "source": "https://uav-en.tmotor.com/favicon.ico"
+  },
+  "Tattu": {
+    "path": "assets/logos/tattu.png",
+    "source": "https://cdn11.bigcommerce.com/s-99ohneivnb/images/stencil/185x47/tagens_1767496421__13722.original.png"
+  },
+  "Walksnail": {
+    "path": "assets/logos/walksnail.png",
+    "source": "https://www.caddxfpv.com/cdn/shop/files/01_2_29417c25-4297-4be1-bb2a-72c354e141b7.png?v=1773372281&width=180"
+  },
+  "uAvionix": {
+    "path": "assets/logos/uavionix.png",
+    "source": "https://uavionix.com/wp-content/uploads/2025/07/cropped-favicon-192x192.png"
+  },
+  "Anduril Industries": {
+    "path": "assets/logos/anduril.ico",
+    "source": "https://www.anduril.com:443/assets/favicon/favicon.xxWKiVhdqu.ico",
+    "dark": true
+  },
+  "Shield AI": {
+    "path": "assets/logos/shieldai.png",
+    "source": "https://shield.ai/wp-content/uploads/2025/03/favicon.png"
+  },
+  "Boeing": {
+    "path": "assets/logos/boeing.ico",
+    "source": "https://www.boeing.com:443/favicon.ico?v=1"
+  },
+  "Insitu": {
+    "path": "assets/logos/insitu.png",
+    "source": "https://www.insitu.com/wp-content/uploads/2020/12/cropped-Insitu_UAV_Avatar-01-192x192.png"
+  },
+  "Textron Systems": {
+    "path": "assets/logos/textron.svg",
+    "source": "https://www.textronsystems.com/themes/custom/textronsystems/assets/favicon/safari-pinned-tab.svg"
+  },
+  "Elbit Systems": {
+    "path": "assets/logos/elbit.svg",
+    "source": "https://www.elbitsystems.com/themes/elbit/favicon/favicon.svg"
+  },
+  "Israel Aerospace Industries": {
+    "status": "unresolved",
+    "source": "https://www.iai.co.il/",
+    "reason": "The official site did not expose a reliable downloadable logo asset in the research pass."
+  },
+  "Turkish Aerospace Industries": {
+    "path": "assets/logos/tusas.ico",
+    "source": "https://tusas.com/favicon.ico",
+    "dark": true
+  },
+  "STM Defense": {
+    "status": "unresolved",
+    "source": "https://www.stm.com.tr/",
+    "reason": "The official site blocked asset retrieval in the research pass; no verified local logo asset was added."
+  },
+  "Airbus": {
+    "path": "assets/logos/airbus.svg",
+    "source": "https://www.airbus.com/themes/custom/airbus_web_experience_ui/favicons/corporate/favicon.svg"
+  },
+  "Leonardo": {
+    "path": "assets/logos/leonardo.png",
+    "source": "https://www.leonardo.com/o/leonardo-restyle-theme/images/site-logo-touch-icon-180.png"
+  },
+  "BAE Systems": {
+    "status": "unresolved",
+    "source": "https://www.baesystems.com/",
+    "reason": "The official site blocked asset retrieval in the research pass; no verified local logo asset was added."
+  },
+  "Saab": {
+    "path": "assets/logos/saab.svg",
+    "source": "https://www.saab.com/ui/images/favicon5/favicon.svg"
+  },
+  "Hensoldt": {
+    "path": "assets/logos/hensoldt.svg",
+    "source": "https://www.hensoldt.net/favicon.svg"
+  },
+  "Rheinmetall": {
+    "path": "assets/logos/rheinmetall.png",
+    "source": "https://www.rheinmetall.com/Rheinmetall%20Group/General/Logos/Rheinmetall.png"
+  },
+  "Diehl Defence": {
+    "path": "assets/logos/diehl.png",
+    "source": "https://new.diehl.com/favicon.png"
+  },
+  "MBDA": {
+    "path": "assets/logos/mbda.png",
+    "source": "https://www.mbda-systems.com/themes/custom/mbda/images/favicon/favicon-32x32.png"
+  },
+  "Rafael Advanced Defense Systems": {
+    "path": "assets/logos/rafael.ico",
+    "source": "https://www.rafael.co.il/favicon.ico"
+  },
+  "Hanwha Aerospace": {
+    "path": "assets/logos/hanwha.ico",
+    "source": "https://www.hanwhaaerospace.com/assets/content/favicon.ico"
+  },
+  "LIG Nex1": {
+    "path": "assets/logos/lig.ico",
+    "source": "https://www.ligdefenseaerospace.com/res/img/favicon.ico"
+  },
+  "DroneShield": {
+    "path": "assets/logos/droneshield.ico",
+    "source": "https://images.squarespace-cdn.com/content/v1/660a32624c94dd36e509baf3/8d237844-5127-42e1-9473-b6a7fae89053/favicon.ico?format=100w"
+  },
+  "Epirus": {
+    "status": "unresolved",
+    "source": "https://epirusinc.com/",
+    "reason": "The available image was a social hero graphic rather than a reliable standalone logo."
+  },
+  "Fortem Technologies": {
+    "path": "assets/logos/fortem.svg",
+    "source": "https://www.fortemtech.com/assets/img/logo/logo.svg"
+  },
+  "Echodyne": {
+    "status": "unresolved",
+    "source": "https://echodyne.com/",
+    "reason": "The available image was a product hero graphic rather than a reliable standalone logo."
+  },
+  "Sensofusion": {
+    "path": "assets/logos/sensofusion.png",
+    "source": "https://sensofusion.com/wp-content/uploads/cropped-sf-fav-192x192.png"
+  },
+  "Numerica": {
+    "status": "unresolved",
+    "source": "https://numerica.us/",
+    "reason": "The listed domain now resolves to Anduril's Spyglass rather than Numerica; no reliable Numerica logo asset was found."
+  },
+  "Robin Radar Systems": {
+    "path": "assets/logos/robin.svg",
+    "source": "https://www.robinradar.com/hubfs/New%20Website%202024/Logo/RRP-2024-favicon.svg"
+  },
+  "Aaronia": {
+    "path": "assets/logos/aaronia.png",
+    "source": "https://aaronia.com/media/favicon/websites/1/favicon.png"
+  },
+  "Liteye Systems": {
+    "status": "unresolved",
+    "source": "https://liteye.com/",
+    "reason": "The available asset resolved to DZYNE's current favicon rather than a reliable Liteye logo."
+  },
+  "SRC, Inc.": {
+    "path": "assets/logos/src.ico",
+    "source": "https://www.srcinc.com/favicon.ico?favicon.01_367wgzfqey.ico"
+  },
+  "QinetiQ": {
+    "path": "assets/logos/qinetiq.svg",
+    "source": "https://www.qinetiq.com/-/media/Qinetiq-Media/Images/Header/logo.svg"
+  },
+  "ADS Inc.": {
+    "path": "assets/logos/ads.ico",
+    "source": "https://www.adsinc.com/adsfavicon.ico"
+  },
+  "AG3 Labs": {
+    "path": "assets/logos/ag3.jpg",
+    "source": "https://cdn.prod.website-files.com/6a06d4f6669725e84f11834e/6a0c1cacff84f334f6d8b4cc_favicon256.jpg"
+  },
+  "Adler Aerospace": {
+    "path": "assets/logos/adler.png",
+    "source": "https://i0.wp.com/adleraerospace.com/wp-content/uploads/2025/06/cropped-color-copy.png?fit=192%2C192&ssl=1"
+  },
+  "Advanced Aircraft Company": {
+    "path": "assets/logos/aac.jpg",
+    "source": "https://advancedaircraftcompany.com/wp-content/uploads/2017/03/AAC-Favicon-1.jpg"
+  },
+  "Agilis Air": {
+    "path": "assets/logos/agilis.svg",
+    "source": "https://agilisair.com/favicon.svg",
+    "dark": true
+  },
+  "Bravo Ordnance": {
+    "path": "assets/logos/warhead.png",
+    "source": "https://content.app-sources.com/s/049379137077076041/uploads/Global/BO_Logo_Flag-Red-2674578.png"
+  },
+  "Chase Defense Partners": {
+    "status": "unresolved",
+    "source": "https://chasedefense.com/",
+    "reason": "The available default favicon was unrelated to Chase Defense Partners; no reliable logo asset was found."
+  },
+  "Chey-Tac": {
+    "path": "assets/logos/cheytac.png",
+    "source": "https://cheytac.com/wp-content/uploads/2025/03/cropped-cropped-Cheytac-Logo-single-icon-2019-07-1-192x192.png"
+  },
+  "Cyclops Defense": {
+    "path": "assets/logos/cyclops.png",
+    "source": "https://cyclopsdefense.com/assets/images/favicon_io/apple-touch-icon.png"
+  },
+  "DefendEye USA": {
+    "status": "unresolved",
+    "source": "",
+    "reason": "No verified official domain or logo source was available."
+  },
+  "Draganfly": {
+    "path": "assets/logos/draganfly.webp",
+    "source": "https://draganfly.com/wp-content/uploads/2020/01/favicon1.webp"
+  },
+  "Envision Technology": {
+    "path": "assets/logos/envision.webp",
+    "source": "https://www.envision-tek.com/wp-content/uploads/2025/08/EnvisionTechnologyFavicon-300x300.webp"
+  },
+  "Grim Tech": {
+    "path": "assets/logos/grim.jpg",
+    "source": "https://static.wixstatic.com/media/a0df72_6168177e759a46cf9e81029d4b0bbc06~mv2.jpg/v1/fill/w_180,h_180,lg_1,usm_0.66_1.00_0.01/a0df72_6168177e759a46cf9e81029d4b0bbc06~mv2.jpg"
+  },
+  "Hyperscale": {
+    "status": "unresolved",
+    "source": "https://hyperscale.us/",
+    "reason": "The official site did not expose a reliable logo asset in the research pass."
+  },
+  "Kela Defense US": {
+    "status": "unresolved",
+    "source": "https://keladefense.com/",
+    "reason": "The listed domain redirected without exposing a reliable Kela Defense logo asset."
+  },
+  "Kraken Kinetics": {
+    "path": "assets/logos/kraken.png",
+    "source": "https://cdn.prod.website-files.com/6703a8e50051cbea778580f6/670426016f45d908a91d8f8b_kraken-favicon.png"
+  },
+  "LTMiltech USA": {
+    "path": "assets/logos/ltmiltech.png",
+    "source": "https://ltmiltech.com/storage/uploads/1762264918496-ltmiltech-favicon-5f2c9ffcd4fb72856472.png"
+  },
+  "Lumenier": {
+    "path": "assets/logos/lumenier.webp",
+    "source": "https://cdn.shopify.com/oxygen-v2/33829/23753/49278/4845435/assets/favicon--tU66_vW.webp"
+  },
+  "Mithril Defense": {
+    "path": "assets/logos/mithril.svg",
+    "source": "https://cdn.prod.website-files.com/695d357d9f5de49732993184/695d64bf13928af91622dc4b_footer_logo.svg",
+    "dark": true
+  },
+  "Mountain Horse Solutions": {
+    "path": "assets/logos/mountain.png",
+    "source": "https://mtnhorse.com/wp-content/uploads/2020/04/cropped-MTNHorse_Shield_Color-1-192x192.png"
+  },
+  "Nammo": {
+    "path": "assets/logos/nammo.png",
+    "source": "https://www.nammo.com/wp-content/uploads/2026/06/favicon-256x256-1.png"
+  },
+  "ORQA US": {
+    "path": "assets/logos/orqa-us.webp",
+    "source": "https://orqaus.com/wp-content/uploads/2026/04/orqa-favicon-300x300.webp"
+  },
+  "Perennial Autonomy": {
+    "path": "assets/logos/perennial.svg",
+    "source": "https://www.perennialautonomy.com/favicon.svg"
+  },
+  "Planned Systems International": {
+    "path": "assets/logos/psi.png",
+    "source": "https://static.wixstatic.com/media/0410c3_6a8aa65db508473bb3bf59a7d2fdf0b9~mv2.png/v1/fill/w_180,h_180,lg_1,usm_0.66_1.00_0.01/0410c3_6a8aa65db508473bb3bf59a7d2fdf0b9~mv2.png"
+  },
+  "Powerus": {
+    "path": "assets/logos/powerus.png",
+    "source": "https://www.power.us/favicon.png?v=3"
+  },
+  "Rajant": {
+    "path": "assets/logos/rajant.png",
+    "source": "https://rajant.com/wp-content/uploads/2025/08/cropped-Rajant-Logo-Taglines-03-1-1-192x192.png"
+  },
+  "Renegade UxS": {
+    "path": "assets/logos/renegade.jpg",
+    "source": "https://renegadeuxs.com/wp-content/uploads/2026/02/favo-300x300.jpg"
+  },
+  "SOF Landing": {
+    "status": "unresolved",
+    "source": "",
+    "reason": "No verified official domain or logo source was available."
+  },
+  "Skycutter": {
+    "path": "assets/logos/skycutter.png",
+    "source": "https://skycutteruas.co.uk/wp-content/uploads/2024/06/Skycutter_logo__1_-removebg-e1756186862719.png"
+  },
+  "Stellarion": {
+    "path": "assets/logos/stellarion.png",
+    "source": "https://cdn.prod.website-files.com/6aa12ca58cdebe399b7aef7e/6abfacd0a4aec5c3faf82291_st_favicon_1080x1080.png"
+  },
+  "T3i": {
+    "path": "assets/logos/t3i.png",
+    "source": "https://cdn.prod.website-files.com/6890ef5f9bbaf20be76a1864/6890f390a982e897aba6c1d0_Illustrator%20assets_White%20logo.png",
+    "dark": true
+  },
+  "Tesseract Ventures": {
+    "path": "assets/logos/tesseract.ico",
+    "source": "https://images.squarespace-cdn.com/content/v1/69d7ad50759ecb44a1e6c1a5/51a00771-7191-430f-adac-d1200ad3d5ad/favicon.ico"
+  },
+  "Titan Dynamics": {
+    "path": "assets/logos/titan.png",
+    "source": "https://titandynamics.aero/assets/logo-favicon-CQN6NvMD.png"
+  },
+  "UAS Nexus": {
+    "path": "assets/logos/uasnexus.png",
+    "source": "https://syndicate.uasnexus.com/cdn/shop/files/UASN_LOGO_brandBLUE.png?v=1754511783&width=180"
+  },
+  "Vantor": {
+    "path": "assets/logos/vantor.png",
+    "source": "https://vantor.com/favicon-32x32.png"
+  },
+  "Viter Systems": {
+    "path": "assets/logos/viter.png",
+    "source": "https://www.viterlab.com/favicon-32x32.png"
+  },
+  "Volatus Aerospace USA": {
+    "status": "unresolved",
+    "source": "https://volatusaerospace.com/",
+    "reason": "The official site was unavailable in the research pass; no verified local logo asset was added."
+  },
+  "WGS Systems": {
+    "status": "unresolved",
+    "source": "https://wgssystems.com/",
+    "reason": "The available image was an unrelated certification graphic rather than a reliable standalone logo."
+  },
+  "Wilcox Cherry Defense": {
+    "path": "assets/logos/general-cherry.svg",
+    "source": "https://gencherry.com/icon.svg?icon.0xzulo51ztzlm.svg"
+  },
+  "Zaruba": {
+    "path": "assets/logos/zaruba.ico",
+    "source": "https://zaruba.tech/favicon.ico"
+  },
   "Hoverseen": {
     "status": "unresolved",
     "source": "https://hoverseen.com/",

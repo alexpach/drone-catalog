@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60.42 0 243.364 243.364">
+	<!--
+		The Perennial Autonomy mark.
+
+		The artwork is 122.5 x 243.4, so the viewBox is the mark's own height
+		squared up around it: the mark runs edge to edge vertically (the tight
+		dimension in a square favicon slot) and centres horizontally.
+
+		One file serves both browser themes. An SVG favicon is rendered as its
+		own document, so the media query below reads the OS/browser theme, NOT
+		the page's colour scheme: black on light chrome, stone on dark. Chrome
+		and Firefox honour it; anywhere it is ignored the black default stands.
+	-->
+	<style>
+		path { fill: #000; }
+
+		@media (prefers-color-scheme: dark) {
+			path { fill: #D0D0D0; }
+		}
+	</style>
+	<path d="M0.0238868 124.547C-0.167658 123.724 0.838494 123.165 1.436 123.763L60.519 182.845C60.8466 183.173 60.8466 183.704 60.519 184.032L1.436 243.115C0.838414 243.712 -0.167719 243.153 0.0238868 242.33L13.6938 183.629C13.723 183.503 13.723 183.373 13.6938 183.248L0.0238868 124.547ZM61.7846 62.7909C61.593 61.9679 62.5992 61.4082 63.1967 62.0057L122.279 121.088C122.607 121.416 122.607 121.948 122.279 122.276L63.1967 181.358C62.5993 181.956 61.5933 181.397 61.7846 180.574L75.4546 121.873C75.4837 121.748 75.4837 121.616 75.4546 121.491L61.7846 62.7909ZM0.0238868 1.03402C-0.167623 0.2111 0.8385 -0.347615 1.436 0.249843L60.519 59.3319C60.8466 59.6599 60.8465 60.1913 60.519 60.5194L1.436 119.602C0.838415 120.199 -0.167727 119.64 0.0238868 118.817L13.6938 60.1161C13.723 59.9907 13.723 59.8605 13.6938 59.7352L0.0238868 1.03402Z" />
+</svg>
