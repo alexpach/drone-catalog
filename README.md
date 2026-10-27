@@ -32,7 +32,15 @@ numbers describe the current working register, not the total size of the global
 market.
 
 `index.html` is a browser viewer for `companies.csv` with per-column sorting
-and filtering. To use it locally, run `python3 -m http.server` in the repo root
+and filtering. Industry and country values appear as pills, with searchable
+checkbox filters on desktop and mobile. Select any matching tags within each
+filter; industry and country filters combine together. **All** selects every
+tag, **Clear** selects none, and **Clear filters** resets the full catalog.
+Industry tags are separated by semicolons and countries by slashes in the CSV.
+The table hides `period_status` and `evidence_url`; both remain available in
+company details.
+
+To use it locally, run `python3 -m http.server` in the repo root
 and open <http://localhost:8000>. Opening the file directly will not load the CSV.
 
 Logo assets for the catalog are stored in `assets/logos/` and mapped in

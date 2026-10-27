@@ -58,7 +58,28 @@
     width: 100%; min-width: 90px; padding: 4px 6px; font: inherit; font-size: 12px;
     border: 1px solid var(--border); border-radius: 4px; background: var(--panel); color: var(--text);
   }
-  .filters .active { border-color: var(--accent); }
+  .filters .active, .multi-trigger.active { border-color: var(--accent); }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { color: var(--accent); background: var(--hover); font-weight: 500; }
+  td.country_of_origin { min-width: 200px; max-width: 260px; }
+  .multi-filter { min-width: 0; }
+  .multi-trigger { width: 100%; min-width: 120px; padding: 4px 6px; font-size: 12px; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .multi-trigger::after { content: '▾'; color: var(--muted); }
+  .multi-menu { position: fixed; margin: 0; padding: 12px; width: 320px; max-width: calc(100vw - 24px); border: 1px solid var(--border); border-radius: 8px; background: var(--panel); color: var(--text); box-shadow: 0 8px 28px #0002; font-weight: 400; }
+  .multi-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+  .multi-actions span { color: var(--muted); font-size: 12px; }
+  .multi-actions button { padding: 4px 8px; }
+  .multi-search { width: 100%; padding: 7px 8px; margin-bottom: 8px; border: 1px solid var(--border); border-radius: 4px; background: var(--panel); color: var(--text); font: inherit; }
+  .multi-options { overflow-y: auto; max-height: min(320px, 40vh); }
+  .multi-menu .multi-options label { display: flex; align-items: center; gap: 8px; padding: 6px 4px; cursor: pointer; border-radius: 4px; font-size: 13px; color: var(--text); }
+  .multi-menu .multi-options label:hover { background: var(--hover); }
+  .multi-options input { width: 16px; height: 16px; min-width: 16px; margin: 0; accent-color: var(--accent); }
+  .mobile-filter { display: grid; gap: 5px; min-width: 0; color: var(--muted); font-size: 13px; }
+  @media (max-width: 760px) {
+    .multi-trigger { min-height: 44px; font-size: 16px; padding: 8px; }
+    .multi-menu .multi-options label { min-height: 44px; }
+    .multi-search { font-size: 16px; }
+  }
   tbody tr:hover td { background: var(--hover); }
   td.name { font-weight: 600; white-space: nowrap; position: sticky; left: 0; background: var(--panel); z-index: 1; }
   th.name { position: sticky; left: 0; z-index: 3; }
@@ -142,7 +163,8 @@
 </div>
 <div class="mobile-controls">
   <label>Status<select id="mobile-status"><option value="__all">All statuses</option></select></label>
-  <label>Country<select id="mobile-country"><option value="__all">All countries</option></select></label>
+  <div class="mobile-filter"><span>Country</span><div id="mobile-country"></div></div>
+  <div class="mobile-filter"><span>Industry</span><div id="mobile-industry"></div></div>
   <label>Sort by<select id="mobile-sort"><option value="">Original order</option><option value="name:1">Company name: A–Z</option><option value="name:-1">Company name: Z–A</option><option value="country_of_origin:1">Country: A–Z</option></select></label>
 </div>
 <div class="cards" id="cards" aria-label="Companies"></div>
@@ -155,6 +177,8 @@
 // Columns with at most this many distinct values get a dropdown filter.
 const SELECT_MAX = 12;
 const LINK_COLS = new Set(['evidence_url', 'status_source']);
+const HIDDEN_COLS = new Set(['period_status', 'evidence_url']);
+const TAG_COLS = new Set(['industry', 'country_of_origin']);
 
 function parseCSV(text) {
   const rows = []; let row = [], field = '', quoted = false;
@@ -180,6 +204,68 @@ const isBlank = v => v === '' || v.toLowerCase() === 'unknown';
 
 let cols = [], data = [], logos = {}, sort = { col: null, dir: 1 };
 const filters = {};
+let tableCols = [];
+const tagOptions = {};
+function tags(col, value) {
+  return [...new Set(value.split(col === 'industry' ? ';' : '/').map(v => v.trim()).filter(Boolean))];
+}
+function tagMarkup(col, value) {
+  const values = tags(col, value);
+  return '<span class="tag-list">' + values.map(v => '<span class="pill tag">' + esc(v) + '</span>').join('') + '</span>';
+}
+function multiFilter(col, prefix) {
+  const id = prefix + '-' + col;
+  return '<div class="multi-filter" data-tags="' + col + '"><button type="button" class="multi-trigger" popovertarget="' + id + '" aria-label="Filter ' + col.replace(/_/g, ' ') + '">All</button>' +
+    '<div class="multi-menu" id="' + id + '" popover="auto" role="group" aria-label="Filter ' + col.replace(/_/g, ' ') + '"><div class="multi-actions"><span class="multi-count"></span><div><button type="button" data-action="all">All</button> <button type="button" data-action="clear">Clear</button></div></div>' +
+    '<input class="multi-search" type="search" placeholder="Search tags…" aria-label="Search ' + col.replace(/_/g, ' ') + ' tags"><div class="multi-options">' + tagOptions[col].map(v =>
+      '<label><input type="checkbox" value="' + esc(v) + '" checked><span>' + esc(v || '(blank)') + '</span></label>').join('') + '</div></div></div>';
+}
+function syncTagFilters(col) {
+  const selected = filters[col]?.values;
+  const count = selected ? selected.size : tagOptions[col].length;
+  const summary = !selected ? 'All' : count === 0 ? 'None selected' : count === 1 ? ([...selected][0] || '(blank)') : count + ' selected';
+  document.querySelectorAll('[data-tags="' + col + '"]').forEach(control => {
+    const trigger = control.querySelector('.multi-trigger');
+    trigger.textContent = summary;
+    trigger.classList.toggle('active', !!selected);
+    trigger.setAttribute('aria-label', 'Filter ' + col.replace(/_/g, ' ') + ': ' + summary);
+    control.querySelector('.multi-count').textContent = count + ' of ' + tagOptions[col].length + ' selected';
+    control.querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = !selected || selected.has(input.value); });
+  });
+}
+function initTagFilters() {
+  document.querySelectorAll('[data-tags]').forEach(control => {
+    const col = control.dataset.tags;
+    const trigger = control.querySelector('.multi-trigger');
+    const menu = control.querySelector('.multi-menu');
+    trigger.addEventListener('click', () => {
+      const rect = trigger.getBoundingClientRect();
+      menu.style.left = Math.max(12, Math.min(rect.left, window.innerWidth - 332)) + 'px';
+      menu.style.top = Math.min(rect.bottom + 6, window.innerHeight - 160) + 'px';
+      menu.style.maxHeight = Math.max(140, window.innerHeight - rect.bottom - 18) + 'px';
+    });
+    const update = values => {
+      filters[col] = values.size === tagOptions[col].length ? null : { values };
+      syncTagFilters(col);
+      render();
+    };
+    menu.addEventListener('change', event => {
+      if (event.target.type !== 'checkbox') return;
+      const values = new Set(filters[col]?.values ?? tagOptions[col]);
+      if (event.target.checked) values.add(event.target.value);
+      else values.delete(event.target.value);
+      update(values);
+    });
+    menu.querySelectorAll('[data-action]').forEach(button => button.addEventListener('click', () => {
+      update(new Set(button.dataset.action === 'all' ? tagOptions[col] : []));
+    }));
+    menu.querySelector('.multi-search').addEventListener('input', event => {
+      const query = event.target.value.trim().toLowerCase();
+      menu.querySelectorAll('.multi-options label').forEach(label => { label.hidden = !label.textContent.toLowerCase().includes(query); });
+    });
+  });
+  TAG_COLS.forEach(syncTagFilters);
+}
 
 const companyURL = name => '#company=' + encodeURIComponent(name);
 const statusPill = value => '<span class="pill s-' + esc(value) + '">' + esc(value) + '</span>';
@@ -221,6 +307,7 @@ window.addEventListener('hashchange', () => { showDetails(); if (!document.getEl
 
 function cell(col, v) {
   if (v === '') return '<td class="' + col + '"></td>';
+  if (TAG_COLS.has(col)) return '<td class="' + col + '">' + tagMarkup(col, v) + '</td>';
   if (v.toLowerCase() === 'unknown') return '<td class="' + col + ' unknown">unknown</td>';
   let html = esc(v);
   if (col === 'name') html = '<a href="' + esc(companyURL(v)) + '">' + logoMarkup(v, 'table-logo') + esc(v) + '</a>';
@@ -251,15 +338,16 @@ function render() {
     return cols.every(c => {
       const f = filters[c];
       if (!f) return true;
+      if (f.values) return (tags(c, r[c]).length ? tags(c, r[c]) : ['']).some(v => f.values.has(v));
       return f.exact ? r[c] === f.value : r[c].toLowerCase().includes(f.value);
     });
   });
   if (sort.col) rows = rows.slice().sort((a, b) => compare(a, b, sort.col));
   document.querySelector('#t tbody').innerHTML = rows.length
-    ? rows.map(r => '<tr data-company="' + esc(r.name) + '">' + cols.map(c => cell(c, r[c])).join('') + '</tr>').join('')
-    : '<tr><td class="msg" colspan="' + cols.length + '">No companies match these filters.</td></tr>';
+    ? rows.map(r => '<tr data-company="' + esc(r.name) + '">' + tableCols.map(c => cell(c, r[c])).join('') + '</tr>').join('')
+    : '<tr><td class="msg" colspan="' + tableCols.length + '">No companies match these filters.</td></tr>';
   document.getElementById('cards').innerHTML = rows.length ? rows.map(r =>
-    '<a class="company-card" href="' + esc(companyURL(r.name)) + '"><div class="card-top"><div class="card-company">' + logoMarkup(r.name, 'card-logo') + '<h2>' + esc(r.name) + '</h2></div>' + statusPill(r.status) + '</div><p>' + esc(r.industry) + '</p><div class="card-bottom"><span>' + esc(r.country_of_origin) + '</span><span>View details →</span></div></a>'
+    '<a class="company-card" href="' + esc(companyURL(r.name)) + '"><div class="card-top"><div class="card-company">' + logoMarkup(r.name, 'card-logo') + '<h2>' + esc(r.name) + '</h2></div>' + statusPill(r.status) + '</div><p>' + tagMarkup('industry', r.industry) + '</p><div class="card-bottom"><span>' + tagMarkup('country_of_origin', r.country_of_origin) + '</span><span>View details →</span></div></a>'
   ).join('') : '<p class="msg">No companies match these filters.</p>';
   document.getElementById('count').textContent = rows.length === data.length
     ? data.length + ' companies' : rows.length + ' of ' + data.length + ' companies';
@@ -269,11 +357,12 @@ function render() {
 }
 
 function buildHead() {
-  const titles = cols.map(c =>
+  const titles = tableCols.map(c =>
     '<th class="' + c + '" data-col="' + c + '">' + '<button class="sort-button" type="button">' + esc(c.replace(/_/g, ' ')) + ' <span class="arrow"></span></button></th>').join('');
-  const inputs = cols.map(c => {
+  const inputs = tableCols.map(c => {
+    if (TAG_COLS.has(c)) return '<th class="' + c + '">' + multiFilter(c, 'desktop') + '</th>';
     const values = [...new Set(data.map(r => r[c]))].sort((a, b) => a.localeCompare(b));
-    if (values.length <= SELECT_MAX || c === 'country_of_origin') {
+    if (values.length <= SELECT_MAX) {
       const opts = values.map(v => '<option value="' + esc(v) + '">' + (v === '' ? '(blank)' : esc(v)) + '</option>').join('');
       return '<th class="' + c + '"><select data-col="' + c + '" aria-label="Filter ' + c + '"><option value="__all">All</option>' + opts + '</select></th>';
     }
@@ -298,13 +387,13 @@ function buildHead() {
     document.getElementById('mobile-sort').value = sort.col ? sort.col + ':' + sort.dir : '';
     render();
   }));
-  document.querySelectorAll('thead tr.filters input, thead tr.filters select').forEach(el => {
+  document.querySelectorAll('thead tr.filters input[data-col], thead tr.filters select[data-col]').forEach(el => {
     el.addEventListener('input', () => {
       const col = el.dataset.col, v = el.value;
       if (el.tagName === 'SELECT') filters[col] = v === '__all' ? null : { exact: true, value: v };
       else filters[col] = v.trim() ? { exact: false, value: v.trim().toLowerCase() } : null;
       el.classList.toggle('active', !!filters[col]);
-      if (col === 'status' || col === 'country_of_origin') document.getElementById(col === 'status' ? 'mobile-status' : 'mobile-country').value = v;
+      if (col === 'status') document.getElementById('mobile-status').value = v;
       render();
     });
   });
@@ -315,7 +404,7 @@ document.querySelector('#t tbody').addEventListener('click', event => {
   const row = event.target.closest('tr[data-company]');
   if (row) location.hash = companyURL(row.dataset.company);
 });
-for (const [id, col] of [['mobile-status', 'status'], ['mobile-country', 'country_of_origin']]) {
+for (const [id, col] of [['mobile-status', 'status']]) {
   document.getElementById(id).addEventListener('change', event => {
     const value = event.target.value;
     filters[col] = value === '__all' ? null : { exact: true, value };
@@ -333,12 +422,14 @@ document.getElementById('mobile-sort').addEventListener('change', event => {
 document.getElementById('q').addEventListener('input', render);
 document.getElementById('clear').addEventListener('click', () => {
   document.getElementById('q').value = '';
-  document.querySelectorAll('thead tr.filters input').forEach(el => { el.value = ''; el.classList.remove('active'); });
+  document.querySelectorAll('thead tr.filters input[data-col]').forEach(el => { el.value = ''; el.classList.remove('active'); });
   document.querySelectorAll('thead tr.filters select').forEach(el => { el.value = '__all'; el.classList.remove('active'); });
   for (const k in filters) filters[k] = null;
   sort = { col: null, dir: 1 };
   document.getElementById('mobile-status').value = '__all';
-  document.getElementById('mobile-country').value = '__all';
+  TAG_COLS.forEach(syncTagFilters);
+  document.querySelectorAll('.multi-search').forEach(input => { input.value = ''; });
+  document.querySelectorAll('.multi-options label').forEach(label => { label.hidden = false; });
   document.getElementById('mobile-sort').value = '';
   render();
 });
@@ -352,8 +443,14 @@ Promise.all([
     const [header, ...body] = parseCSV(text);
     cols = header;
     data = body.map(r => Object.fromEntries(cols.map((c, i) => [c, r[i] ?? ''])));
+    tableCols = cols.filter(c => !HIDDEN_COLS.has(c));
+    TAG_COLS.forEach(col => {
+      tagOptions[col] = [...new Set(data.flatMap(row => tags(col, row[col]).length ? tags(col, row[col]) : ['']))].sort((a, b) => a.localeCompare(b));
+      document.getElementById(col === 'industry' ? 'mobile-industry' : 'mobile-country').innerHTML = multiFilter(col, 'mobile');
+    });
     buildHead();
-    for (const [id, col] of [['mobile-status', 'status'], ['mobile-country', 'country_of_origin']]) {
+    initTagFilters();
+    for (const [id, col] of [['mobile-status', 'status']]) {
       const select = document.getElementById(id);
       [...new Set(data.map(r => r[col]))].sort((a, b) => a.localeCompare(b)).forEach(value => select.add(new Option(value || '(blank)', value)));
     }
