@@ -76,6 +76,7 @@
   .msg { padding: 24px; color: var(--muted); }
   .logo { width: 48px; height: 36px; padding: 4px; object-fit: contain; border-radius: 6px; background: var(--panel); flex: 0 0 auto; }
   .logo.dark { background: #18202b; }
+  .logo.placeholder { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; padding: 2px; color: var(--muted); background: var(--hover); border: 1px solid var(--border); font-size: 11px; font-weight: 700; letter-spacing: .04em; line-height: 1; }
   .table-logo { width: 28px; height: 28px; padding: 2px; margin-right: 8px; vertical-align: middle; }
   td.name a { display: inline-flex; align-items: center; }
   .card-company, .detail-title { display: flex; align-items: center; gap: 12px; min-width: 0; }
@@ -183,9 +184,15 @@ const filters = {};
 
 const companyURL = name => '#company=' + encodeURIComponent(name);
 const statusPill = value => '<span class="pill s-' + esc(value) + '">' + esc(value) + '</span>';
+function logoInitials(name) {
+  const words = name.replace(/[^A-Za-z0-9]+/g, ' ').trim().split(/\s+/).filter(Boolean);
+  const meaningful = words.filter(word => !['and', 'of', 'the', 'by', 'for'].includes(word.toLowerCase()));
+  if (meaningful.length > 1) return meaningful.slice(0, 2).map(word => word[0]).join('').toUpperCase();
+  return (meaningful[0] || words[0] || '?').slice(0, 2).toUpperCase();
+}
 function logoMarkup(name, className) {
   const logo = logos[name];
-  if (!logo || !logo.path) return '';
+  if (!logo || !logo.path) return '<span class="logo placeholder ' + className + '" role="img" aria-label="Logo unavailable for ' + esc(name) + '">' + esc(logoInitials(name)) + '</span>';
   return '<img class="logo ' + className + (logo.dark ? ' dark' : '') + '" src="' + esc(logo.path) + '" alt="" loading="lazy">';
 }
 
